@@ -29,7 +29,7 @@ demoApp.service('blogService', function ($rootScope)
                                 post: postToAdd
                             });
                     });
-                   
+
                     console.log(blogPost.id);
                 },
                 error: function(blogPost, error) {

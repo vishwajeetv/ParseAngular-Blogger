@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="text" class="form-control" ng-model="user.password" placeholder="Password">
+                <input type="password" class="form-control" ng-model="user.password" placeholder="Password">
             </div>
 
             <button type="submit" class="btn btn-primary" ng-click="signUp(user)">Submit</button>
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="text" class="form-control" ng-model="user.password" placeholder="Password">
+                <input type="password" class="form-control" ng-model="user.password" placeholder="Password">
             </div>
 
             <button type="submit" class="btn btn-primary"  ng-click="logIn(user)">Submit</button>
@@ -47,7 +47,7 @@
 
             <label>Filter by Title</label>
             <input type="text" class="form-inline" ng-model="filter.title"/>
-                <div ng-repeat="blog in blogs">
+                <div ng-repeat="blog in blogs | filter:filter.title">
                     <div class="panel panel-success">
                       <div class="panel-heading">
                             <h3 class="panel-title">{{blog.title}}</h3>
