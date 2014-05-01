@@ -1,23 +1,38 @@
 <!DOCTYPE html>
-<html data-ng-app="demoApp">
+<html ng-app="demoApp">
 <head>
-	<title>Angular Simple</title>
+	<title>AngularJS + Parse.com Sample App</title>
 	<link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
 </head>
 <body>
+
 <div class="jumbotron text-center">
-  <h1>AngularJS Sample</h1>
+  <h1>AngularJS + Parse.com</h1>
   
 </div>
-<div data-ng-view="">
+<div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 
-
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<div ng-view="">
 
 </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
 <script type="text/javascript" src="js/angular.js"></script>
 <script type="text/javascript" src="js/angular-route.js"></script>
+
 <script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="controllers/simpleController.js"></script>
+<script type="text/javascript" src="controllers/authenticationController.js"></script>
 <script type="text/javascript" src="services/personService.js"></script>
 
 <script src="js/jquery.js"></script>
