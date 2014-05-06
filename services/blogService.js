@@ -1,12 +1,6 @@
-demoApp.service('blogService', function ($rootScope)
+blogApp.service('blogService', function ($rootScope)
 {
-
-
-
-//
-    var blogs  = [];
-//
-//
+ var blogs  = [];
 
 		this.addBlog = function(titleToAdd, postToAdd)
 		{
@@ -21,8 +15,6 @@ demoApp.service('blogService', function ($rootScope)
                 success: function(blogPost) {
 
                     $rootScope.$apply(function () {
-
-
                         blogs.push(
                             {
                                 title: titleToAdd,
@@ -33,21 +25,18 @@ demoApp.service('blogService', function ($rootScope)
                     console.log(blogPost.id);
                 },
                 error: function(blogPost, error) {
-                    // Execute any logic that should take place if the save fails.
-                    // error is a Parse.Error with an error code and description.
+
                     alert('Failed to create new object, with error code: ' + error.description);
                 }
             });
 
 		};
-    this.getBlogs = function () {
 
+    this.getBlogs = function () {
 
         var BlogPost = Parse.Object.extend("BlogPost");
         var blogPost = new BlogPost();
-
         var query = new Parse.Query(BlogPost);
-
 
         query.find({
             success: function(results) {

@@ -1,50 +1,24 @@
 
 <div ng-hide="currentUser">
-    <button class="btn btn-primary auth-toggle" ng-model="radioModel" btn-radio="'register'" ng-click='scenario="register"'>Register</button>
-    <button class="btn btn-primary auth-toggle" ng-model="radioModel" btn-radio="'login'" ng-click='scenario="login"'>Login</button>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 
-        <form action="" method="POST" role="form" ng-show="scenario == 'register'">
-            <h3>Register</h3>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <button class="btn btn-primary auth-toggle" ng-model="radioModel" btn-radio="'register'" ng-click='scenario="register"'>Register</button>
+        <button class="btn btn-primary auth-toggle" ng-model="radioModel" btn-radio="'login'" ng-click='scenario="login"'>Login</button>
+        <div ng-include src="loginViewURL"></div>
+        <div ng-include src="registrationViewURL"></div>
+    </div>
 
-            <div class="form-group">
-                <label for="">Email-Id</label>
-                <input type="text" class="form-control" ng-model="user.email" placeholder="e.g. abc@gmail.com">
-            </div>
-            <div class="form-group">
-                <label for="">Username</label>
-                <input type="text" class="form-control" ng-model="user.username" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" ng-model="user.password" placeholder="Password">
-            </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 
-            <button type="submit" class="btn btn-primary" ng-click="signUp(user)">Submit</button>
-        </form>
+    </div>
 
 
-        <form action="" method="POST" role="form" ng-show="scenario == 'login'">
-            <h3>Login</h3>
-
-            <div class="form-group">
-                <label for="">Username</label>
-                <input type="text" class="form-control" ng-model="user.username" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" ng-model="user.password" placeholder="Password">
-            </div>
-
-            <button type="submit" class="btn btn-primary"  ng-click="logIn(user)">Submit</button>
-        </form>
 </div>
 
 <div ng-show="currentUser">
     <h1>Welcome {{currentUser.get('username')}}</h1>
-
-
-
-
             <label>Filter by Title</label>
             <input type="text" class="form-inline" ng-model="filter.title"/>
                 <div ng-repeat="blog in blogs | filter:filter.title">
@@ -56,16 +30,15 @@
                           {{blog.post}}
                       </div>
             </div>
-
 </div>
 
             <label>Title</label> <input type="text" class="form-control" ng-model="newBlog.title"/>
         <label>Post</label><textarea type="textarea" class="form-control" ng-model="newBlog.post"/>
             <button class='btn btn-primary' ng-click="addBlog()">Add Post</button>
-
+    <button class="btn btn-danger pull-right" ng-click="logOut(user)">Log out</button>
 
     </div>
-    <button class="btn btn-danger pull-right" ng-click="logOut(user)">Log out</button>
+
 </div>
 
 

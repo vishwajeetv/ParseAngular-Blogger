@@ -1,51 +1,27 @@
-demoApp.controller('authenticationController', ['$scope', 'blogService', function ($scope, blogService)
+blogApp.controller('authenticationController', ['$scope','authenticationService', function ($scope, authenticationService)
 {
+    $scope.newUser = {};
+    $scope.checkUser = {};
+    $scope.registrationViewURL = 'views/registrationView.html'
+    $scope.loginViewURL = 'views/loginView.html'
+
+
     $scope.radioModel = 'register';
 
     $scope.scenario = 'register';
     $scope.currentUser = Parse.User.current();
 
-    $scope.signUp = function(form) {
-        var user = new Parse.User();
-        user.set("email", form.email);
-        user.set("username", form.username);
-        user.set("password", form.password);
 
-        user.signUp(null, {
-            success: function(user) {
-                $scope.currentUser = user;
-                $scope.$apply();
-            },
-            error: function(user, error) {
-                alert("Unable to sign up:  " + error.code + " " + error.message);
-            }
-        });
-    };
 
-    $scope.logIn = function(form) {
-        Parse.User.logIn(form.username, form.password, {
-            success: function(user) {
-                $scope.currentUser = user;
-                $scope.$apply();
-            },
-            error: function(user, error) {
-                alert("Unable to log in: " + error.code + " " + error.message);
-            }
-        });
-    };
+    $scope.signUp = function() { authenticationService.registerUser($scope.newUser) };
+
+
+    $scope.logIn = function() { authenticationService.loginUser($scope.checkUser) };
 
     $scope.logOut = function(form) {
         Parse.User.logOut();
         $scope.currentUser = null;
     };
 
-    $scope.blogs = blogService.getBlogs();
-
-		$scope.addBlog = function()
-		{
-			var title = $scope.newBlog.title;
-			var post = $scope.newBlog.post;
-            blogService.addBlog(title, post);
-			
-		};
 }]);
+
