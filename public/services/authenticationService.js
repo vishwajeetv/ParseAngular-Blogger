@@ -13,8 +13,8 @@ blogApp.service('authenticationService', [ '$q', function ($q) {
                 deferred.resolve(user);
             },
             error: function (user, error) {
-                alert("Unable to sign up:  " + error.code + " " + error.message);
-                deferred.reject();
+
+                deferred.reject(error);
             }
         });
         return deferred.promise;
@@ -24,7 +24,7 @@ blogApp.service('authenticationService', [ '$q', function ($q) {
         var currentUser;
         currentUser = Parse.User.current();
         return currentUser;
-    }
+    };
 
     this.loginUser = function (checkUser) {
         var deferred = $q.defer();
@@ -33,8 +33,7 @@ blogApp.service('authenticationService', [ '$q', function ($q) {
                 deferred.resolve(user);
             },
             error: function (user, error) {
-                alert("Unable to log in: " + error.code + " " + error.message);
-                deferred.reject();
+                deferred.reject(error);
             }
         });
         return deferred.promise;

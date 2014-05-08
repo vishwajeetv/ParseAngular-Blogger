@@ -43,4 +43,5 @@ blogApp.service('blogService',['$q','$rootScope', function ($q, $rootScope) {
         });
         return deferred.promise;
     };
+
 }]);
