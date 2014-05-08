@@ -1,17 +1,38 @@
-blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'authenticationService', function ($scope, $location, blogService, authenticationService) {
+
+
+blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'authenticationService','$modal', function ($scope, $location, blogService, authenticationService, $modal) {
 
     $scope.newBlog = {};
+    $scope.currentUser = authenticationService.getCurrentUser();
 
+    $scope.open = function (size) {
+
+        var modalInstance = $modal.open({
+
+            controller: ModalInstanceCtrl,
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+    };
 
         $scope.blogs =
             blogService.getBlogs().then(function (blogsData) {
                 $scope.blogs = blogsData;
-                console.log(blogsData);
+
             });
 
+    $scope.myBlogs =
+        blogService.getMyBlogs($scope.currentUser).then(function (blogsData) {
+            $scope.myBlogs = blogsData;
+
+        });
 
     var blogToPost ={};
-    $scope.currentUser = authenticationService.getCurrentUser();
+
 
     $scope.addBlog = function () {
         blogToPost.title = $scope.newBlog.title;
@@ -33,4 +54,7 @@ blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'aut
             $location.path("/");
 
     };
+
+   
 }]);
+

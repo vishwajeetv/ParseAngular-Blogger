@@ -1,3 +1,8 @@
+<div class="row">
+<div class="col-md-1 col-lg-1">
+
+</div>
+    <div class="col-lg-10 col-md-10">
 <h1>Welcome {{currentUser.get('username')}} <button class="btn btn-danger pull-right" ng-click="logOut()">Log out</button></h1>
 <br>
 
@@ -7,20 +12,39 @@
 </div>
 
 <hr>
+<tabset justified="true">
 
-<div ng-repeat="blog in blogs | filter:filter.title">
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">{{blog.get('title')}}</h3>
+    <tab heading="All Blogs"><div ng-repeat="blog in blogs | filter:filter.title">
+        <br>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{blog.get('title')}}</h3>
+            </div>
+            <div class="panel-body">
+                {{blog.get('post')}}
+            </div>
+            <div class="panel-footer">
+                <div>Author - {{blog.get('author')}}</div><div class="pull-right"></div>
+            </div>
         </div>
-        <div class="panel-body">
-            {{blog.get('post')}}
+    </div></tab>
+
+    <tab heading="My Blogs"><div ng-repeat="blog in myBlogs | filter:filter.title">
+        <br>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{blog.get('title')}}</h3>
+            </div>
+            <div class="panel-body">
+                {{blog.get('post')}}
+            </div>
+            <div class="panel-footer">
+                <div>Author - {{blog.get('author')}}</div><div class="pull-right"></div>
+            </div>
         </div>
-        <div class="panel-footer">
-        <div>Author - {{blog.get('author')}}</div><div class="pull-right"></div>
-        </div>
-    </div>
-</div>
+    </div></tab>
+</tabset>
+
 <hr>
         <div class="input-group col-md-6 col-lg-6">
 
@@ -34,8 +58,13 @@
 </div>
         <br>
 <button class='btn btn-primary' ng-click="addBlog()">Add Post</button>
-        </div>
+
+</div>
+<div class="col-md-1 col-lg-1">
+
+</div>
 
 
+</div>
 
 

@@ -41,7 +41,7 @@ blogApp.controller('authenticationController', ['$scope', '$routeParams', '$loca
                 $scope.currentUser = user;
 
             },function(error) {
-                $scope.alerts.push({type: 'danger' ,msg: error});
+                $scope.alerts.push({type: 'danger' ,msg: error.message});
             })
         };
 
