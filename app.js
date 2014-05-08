@@ -1,5 +1,5 @@
 
-var blogApp = angular.module('blogApp' , ['ngRoute','ui.bootstrap']);
+var blogApp = angular.module('blogApp' , ['ngResource','ngRoute','ui.bootstrap']);
 
 blogApp.config(blogRouter);
 

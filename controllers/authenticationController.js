@@ -1,27 +1,50 @@
-blogApp.controller('authenticationController', ['$scope','authenticationService', function ($scope, authenticationService)
-{
-    $scope.newUser = {};
-    $scope.checkUser = {};
-    $scope.registrationViewURL = 'views/registrationView.html'
-    $scope.loginViewURL = 'views/loginView.html'
+blogApp.controller('authenticationController', ['$scope', '$routeParams', '$location', 'authenticationService',
+    function ($scope, $routeParams, $location, authenticationService) {
+        $scope.newUser = {};
+        $scope.checkUser = {};
+        $scope.registrationViewURL = 'views/registrationView.html'
+        $scope.loginViewURL = 'views/loginView.html'
 
+        $scope.radioModel = 'register';
 
-    $scope.radioModel = 'register';
+        $scope.currentPath = "/";
 
-    $scope.scenario = 'register';
-    $scope.currentUser = Parse.User.current();
+        $scope.scenario = 'register';
+        $scope.currentUser = Parse.User.current();
 
+        checkAuth();
 
+        function checkAuth() {
 
-    $scope.signUp = function() { authenticationService.registerUser($scope.newUser) };
+            if ($scope.currentUser !== null) {
 
+                $location.path("/blog");
+            }
+        }
 
-    $scope.logIn = function() { authenticationService.loginUser($scope.checkUser) };
+        $scope.signUp = function () {
 
-    $scope.logOut = function(form) {
-        Parse.User.logOut();
-        $scope.currentUser = null;
-    };
+            authenticationService.registerUser($scope.newUser).then(function (user) {
 
-}]);
+                $scope.currentUser = user;
+                checkAuth();
+            })
+        };
+
+        $scope.logIn = function () {
+
+            authenticationService.loginUser($scope.checkUser).then(function (user) {
+
+                $scope.currentUser = user;
+                checkAuth();
+            })
+        };
+
+        $scope.logOut = function () {
+            authenticationService.logOut(function () {
+                $location.path("/");
+            });
+        };
+
+    }]);
 
