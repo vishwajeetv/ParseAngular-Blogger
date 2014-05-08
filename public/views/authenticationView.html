@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <button class="btn btn-primary auth-toggle" ng-model="radioModel" btn-radio="'register'"
+                ng-click='scenario="register"'>Register
+        </button>
+        <button class="btn btn-primary auth-toggle" ng-model="radioModel" btn-radio="'login'"
+                ng-click='scenario="login"'>Login
+        </button>
+        <div ng-include src="loginViewURL"></div>
+        <div ng-include src="registrationViewURL"></div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+    </div>
+
+</div>

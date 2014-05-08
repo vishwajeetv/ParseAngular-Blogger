@@ -1,0 +1,14 @@
+<form action="" method="POST" role="form" ng-show="scenario == 'login'">
+    <h3>Register</h3>
+
+    <div class="form-group">
+        <label for="">Username</label>
+        <input type="text" class="form-control" ng-model="checkUser.username" placeholder="Username">
+    </div>
+    <div class="form-group">
+        <label for="">Password</label>
+        <input type="password" class="form-control" ng-model="checkUser.password" placeholder="Password">
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="logIn(checkUser)">Submit</button>
+</form>

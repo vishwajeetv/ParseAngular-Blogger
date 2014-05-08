@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "vishwa-app"
+        }, 
+        "vishwa-app": {
+            "applicationId": "jA3q36liT53yUyWwKO4d3RGtO3J53ionyrexIlRl", 
+            "masterKey": "3zeAJlDzpqN0bgRkGSacTe9SrhMe39ST2mkCXBV3"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}
