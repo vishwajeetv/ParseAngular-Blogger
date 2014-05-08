@@ -1,6 +1,6 @@
 
 
-blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'authenticationService','$modal', function ($scope, $location, blogService, authenticationService, $modal) {
+blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'authenticationService', function ($scope, $location, blogService, authenticationService) {
 
     $scope.newBlog = {};
     $scope.currentUser = authenticationService.getCurrentUser();
@@ -55,6 +55,6 @@ blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'aut
 
     };
 
-   
+
 }]);
 
