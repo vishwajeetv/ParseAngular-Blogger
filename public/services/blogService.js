@@ -1,28 +1,25 @@
-blogApp.service('blogService', function ($rootScope) {
+blogApp.service('blogService',['$q','$rootScope', function ($q, $rootScope) {
     var blogs = [];
 
-    this.addBlog = function (titleToAdd, postToAdd) {
+    this.addBlog = function (blogToPost) {
         var BlogPost = Parse.Object.extend("BlogPost");
         var blogPost = new BlogPost();
-        blogPost.set("title", titleToAdd);
-        blogPost.set("post", postToAdd);
+        blogPost.set("title", blogToPost.title);
+        blogPost.set("post", blogToPost.post);
+        blogPost.set("post", blogToPost.author);
+
+        var deferred = $q.defer();
 
         blogPost.save(null, {
-            success: function (blogPost) {
 
-                $rootScope.$apply(function () {
-                    blogs.push(
-                        {
-                            title: titleToAdd,
-                            post: postToAdd
-                        });
-                });
+            success: function (blogPost) {
+                deferred.resolve();
             },
             error: function (blogPost, error) {
-                alert('Failed to create new object, with error code: ' + error.description);
+                deferred.reject();
             }
         });
-
+        return deferred.promise;
     };
 
     this.getBlogs = function () {
@@ -36,15 +33,17 @@ blogApp.service('blogService', function ($rootScope) {
                         blogs.push(
                             {
                                 title: results[i].get("title"),
-                                post: results[i].get("post")
+                                post: results[i].get("post"),
+                                author: results[i].get("author"),
+                                updatedAt: results[i].get("updatedAt")
                             });
                     }
                 });
             },
             error: function (error) {
-                alert("Error: " + error.code + " " + error.message);
+                console.log(error);
             }
         });
         return blogs;
     };
-});
+}]);

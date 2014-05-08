@@ -1,14 +1,31 @@
-<form action="" method="POST" role="form" ng-show="scenario == 'login'">
-    <h3>Register</h3>
+<br>
+<div class="row">
 
-    <div class="form-group">
-        <label for="">Username</label>
+    <div class="col-md-2 col-lg-2">
+
+    </div>
+
+    <div class="col-md-8 col-lg-8">
+
+
+    <form action="" method="POST" role="form">
+     <div class="form-group">
+         <span class="label label-primary">Username</span>
         <input type="text" class="form-control" ng-model="checkUser.username" placeholder="Username">
     </div>
     <div class="form-group">
-        <label for="">Password</label>
+        <span class="label label-primary">Password</span>
         <input type="password" class="form-control" ng-model="checkUser.password" placeholder="Password">
     </div>
 
-    <button type="submit" class="btn btn-primary" ng-click="logIn(checkUser)">Submit</button>
+    <div class="text-center">
+    <button type="submit" class="btn btn-primary" ng-click="logIn(checkUser)">Login</button>
+    </div>
 </form>
+    </div>
+
+
+    <div class="col-md-2 col-lg-2">
+
+    </div>
+</div>

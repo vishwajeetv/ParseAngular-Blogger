@@ -2,22 +2,17 @@ blogApp.controller('authenticationController', ['$scope', '$routeParams', '$loca
     function ($scope, $routeParams, $location, authenticationService) {
         $scope.newUser = {};
         $scope.checkUser = {};
-        $scope.registrationViewURL = 'views/registrationView.html'
-        $scope.loginViewURL = 'views/loginView.html'
 
-        $scope.radioModel = 'register';
+        $scope.loginViewURL = 'views/loginView.html';
+        $scope.registrationViewURL = 'views/registrationView.html';
+        $scope.loginViewURL = 'views/loginView.html';
 
-        $scope.currentPath = "/";
-
-        $scope.scenario = 'register';
-        $scope.currentUser = Parse.User.current();
+        $scope.currentUser = authenticationService.getCurrentUser();
 
         checkAuth();
 
         function checkAuth() {
-
             if ($scope.currentUser !== null) {
-
                 $location.path("/blog");
             }
         }
@@ -25,7 +20,6 @@ blogApp.controller('authenticationController', ['$scope', '$routeParams', '$loca
         $scope.signUp = function () {
 
             authenticationService.registerUser($scope.newUser).then(function (user) {
-
                 $scope.currentUser = user;
                 checkAuth();
             })
@@ -34,7 +28,6 @@ blogApp.controller('authenticationController', ['$scope', '$routeParams', '$loca
         $scope.logIn = function () {
 
             authenticationService.loginUser($scope.checkUser).then(function (user) {
-
                 $scope.currentUser = user;
                 checkAuth();
             })
@@ -42,6 +35,7 @@ blogApp.controller('authenticationController', ['$scope', '$routeParams', '$loca
 
         $scope.logOut = function () {
             authenticationService.logOut(function () {
+                $scope.currentUser = null;
                 $location.path("/");
             });
         };

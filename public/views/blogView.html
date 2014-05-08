@@ -1,7 +1,14 @@
-<h1>Welcome {{currentUser.get('username')}}</h1>
-<label>Filter by Title</label>
-<input type="text" class="form-inline" ng-model="filter.title"/>
-<div ng-repeat="blog in blogs | filter:filter.title">
+<h1>Welcome {{currentUser.get('username')}} <button class="btn btn-danger pull-right" ng-click="logOut()">Log out</button></h1>
+<br>
+
+<div class="input-group input-group-lg col-md-6 col-lg-6">
+    <span class="input-group-addon glyphicon glyphicon-search"></span>
+    <input type="text" class="form-control" ng-model="filter.title" placeholder="Search by Title"/>
+</div>
+
+<hr>
+
+<div ng-repeat="blog in blogs">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h3 class="panel-title">{{blog.title}}</h3>
@@ -9,14 +16,25 @@
         <div class="panel-body">
             {{blog.post}}
         </div>
+        <div class="panel-footer">
+        <div>{{blog.author}}</div><div class="pull-right">{{blog.updatedAt}}</div>
+        </div>
     </div>
 </div>
+<hr>
+        <div class="input-group col-md-6 col-lg-6">
 
-<label>Title</label> <input type="text" class="form-control" ng-model="newBlog.title"/>
-<label>Post</label><textarea type="textarea" class="form-control" ng-model="newBlog.post"/>
+            <span class="label label-primary">Title</span>
+            <input type="text" class="form-control" ng-model="newBlog.title"/>
+            </div>
+
+<div class="input-group col-md-6 col-lg-6">
+    <span class="label label-primary">Post</span>
+<textarea type="textarea" class="form-control" ng-model="newBlog.post"/>
+</div>
+        <br>
 <button class='btn btn-primary' ng-click="addBlog()">Add Post</button>
-<button class="btn btn-danger pull-right" ng-click="logOut()">Log out</button>
-
+        </div>
 
 
 

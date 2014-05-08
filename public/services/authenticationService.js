@@ -20,6 +20,12 @@ blogApp.service('authenticationService', [ '$q', function ($q) {
         return deferred.promise;
     };
 
+    this.getCurrentUser = function(){
+        var currentUser;
+        currentUser = Parse.User.current();
+        return currentUser;
+    }
+
     this.loginUser = function (checkUser) {
         var deferred = $q.defer();
         Parse.User.logIn(checkUser.username, checkUser.password, {
@@ -36,10 +42,7 @@ blogApp.service('authenticationService', [ '$q', function ($q) {
 
     this.logOut = function () {
         Parse.User.logOut();
-
-        $rootScope.currentUser = null;
-
-
+        return true;
     };
 
 }]);
