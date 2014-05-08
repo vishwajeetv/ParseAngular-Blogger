@@ -6,7 +6,7 @@ blogApp.service('blogService',['$q','$rootScope', function ($q, $rootScope) {
         var blogPost = new BlogPost();
         blogPost.set("title", blogToPost.title);
         blogPost.set("post", blogToPost.post);
-        blogPost.set("post", blogToPost.author);
+        blogPost.set("author", blogToPost.author);
 
         var deferred = $q.defer();
 
@@ -14,6 +14,7 @@ blogApp.service('blogService',['$q','$rootScope', function ($q, $rootScope) {
 
             success: function (blogPost) {
                 deferred.resolve();
+
             },
             error: function (blogPost, error) {
                 deferred.reject();
@@ -26,24 +27,20 @@ blogApp.service('blogService',['$q','$rootScope', function ($q, $rootScope) {
         var BlogPost = Parse.Object.extend("BlogPost");
         var blogPost = new BlogPost();
         var query = new Parse.Query(BlogPost);
+
+        var deferred = $q.defer();
+
         query.find({
             success: function (results) {
                 $rootScope.$apply(function () {
-                    for (var i = 0; i < results.length; i++) {
-                        blogs.push(
-                            {
-                                title: results[i].get("title"),
-                                post: results[i].get("post"),
-                                author: results[i].get("author"),
-                                updatedAt: results[i].get("updatedAt")
-                            });
-                    }
+                    deferred.resolve(results);
                 });
             },
             error: function (error) {
                 console.log(error);
+                deferred.reject();
             }
         });
-        return blogs;
+        return deferred.promise;
     };
 }]);

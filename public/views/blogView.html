@@ -8,16 +8,16 @@
 
 <hr>
 
-<div ng-repeat="blog in blogs">
+<div ng-repeat="blog in blogs | filter:filter.title">
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h3 class="panel-title">{{blog.title}}</h3>
+            <h3 class="panel-title">{{blog.get('title')}}</h3>
         </div>
         <div class="panel-body">
-            {{blog.post}}
+            {{blog.get('post')}}
         </div>
         <div class="panel-footer">
-        <div>{{blog.author}}</div><div class="pull-right">{{blog.updatedAt}}</div>
+        <div>Author - {{blog.get('author')}}</div><div class="pull-right"></div>
         </div>
     </div>
 </div>
