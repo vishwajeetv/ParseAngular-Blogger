@@ -3,7 +3,8 @@
 
 </div>
     <div class="col-lg-10 col-md-10">
-<h1>Welcome {{currentUser.get('username')}} <button class="btn btn-danger pull-right" ng-click="logOut()">Log out</button></h1>
+<h3>Welcome {{currentUser.get('username')}} <button class="btn btn-danger pull-right" ng-click="logOut()">Log out</button></h3>
+        <hr>
         <button class="btn btn-primary btn-lg pull-right" ng-click="isCollapsed = !isCollapsed">New Post</button>
 
         <div collapse="isCollapsed">
@@ -70,7 +71,7 @@
 </tabset>
 
 <hr>
-        <pagination boundary-links="true" total-items="totalItemsToDisplay" items-per-page="3" ng-model="currentPage"
+        <pagination class=pull-right" boundary-links="true" total-items="totalItemsToDisplay" items-per-page="3" ng-model="currentPage"
                     ng-click="setPage()" class="pagination-sm"
                     previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 
