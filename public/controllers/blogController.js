@@ -1,33 +1,37 @@
 
+blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'authenticationService',
+    function ($scope, $location, blogService, authenticationService) {
 
-blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'authenticationService', function ($scope, $location, blogService, authenticationService) {
+        $scope.isCollapsed = true;
 
-    $scope.newBlog = {};
+        $scope.newBlog = {};
     $scope.currentUser = authenticationService.getCurrentUser();
-
-    $scope.open = function (size) {
-
-        var modalInstance = $modal.open({
-
-            controller: ModalInstanceCtrl,
-            size: size,
-            resolve: {
-                items: function () {
-                    return $scope.items;
-                }
-            }
-        });
-    };
+        $scope.totalItems;
 
         $scope.blogs =
             blogService.getBlogs().then(function (blogsData) {
                 $scope.blogs = blogsData;
-
+                $scope.totalItems = $scope.blogs.length;
+                $scope.totalItemsToDisplay = $scope.totalItems;
             });
+
+
+        $scope.currentPage = 1;
+        $scope.maxSize = 5;
+        $scope.blogLimitEnd = $scope.currentPage * 3;
+        $scope.itemsPerPage = 3;
+        $scope.setPage = function () {
+            $scope.blogLimitEnd = $scope.currentPage * 3;
+        };
+
+        $scope.pageChanged = function() {
+            console.log('Page changed to: ' + $scope.currentPage);
+        };
 
     $scope.myBlogs =
         blogService.getMyBlogs($scope.currentUser).then(function (blogsData) {
             $scope.myBlogs = blogsData;
+            $scope.myTotalItems = $scope.blogs.length
 
         });
 

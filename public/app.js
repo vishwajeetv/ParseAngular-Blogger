@@ -18,3 +18,4 @@ function blogRouter ($routeProvider)
             redirectTo: '/'
         });
 }
+

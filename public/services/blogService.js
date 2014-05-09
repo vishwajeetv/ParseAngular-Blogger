@@ -1,8 +1,6 @@
 blogApp.service('blogService',['$q','$rootScope', function ($q, $rootScope) {
+
     var blogs = [];
-
-
-
     this.addBlog = function (blogToPost) {
         var BlogPost = Parse.Object.extend("BlogPost");
         var blogPost = new BlogPost();
