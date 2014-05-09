@@ -35,6 +35,10 @@ blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'aut
 
         });
 
+        $scope.alerts = [
+
+        ];
+
     var blogToPost ={};
 
 
@@ -49,6 +53,9 @@ blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'aut
             $scope.blogs =
                 blogService.getBlogs().then(function (blogsData) {
                     $scope.blogs = blogsData;
+                    $scope.isCollapsed = true;
+                    $scope.alerts.push({type: 'success' ,msg: "Successfully Posted! Cheers!"});
+                    $timeout($scope.alerts.splice(0, 1), 2000);
                 });
         });
     };

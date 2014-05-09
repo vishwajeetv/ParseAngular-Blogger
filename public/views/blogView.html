@@ -10,6 +10,8 @@
 <hr>
             <div class="input-group col-lg-8 col-md-8">
 
+                <alert ng-repeat="alert in alerts" type='{{alert.type}}' close="closeAlert($index)">{{alert.msg}} </alert>
+
                 <span class="label label-primary">Title</span>
                 <input type="text" class="form-control" ng-model="newBlog.title"/>
             </div>
@@ -33,7 +35,7 @@
 <hr>
 <tabset justified="true">
 
-    <tab heading="All Blogs" ng-click="totalItemsToDisplay = totalItems" ng-init="totalItemsToDisplay = totalItems"><div ng-repeat="blog in blogs | filter:filter.title | limitTo: blogLimitEnd | limitTo : -3">
+    <tab heading="All Blogs" ng-click="totalItemsToDisplay = totalItems"><div ng-repeat="blog in blogs | filter:filter.title | limitTo: blogLimitEnd | limitTo : -3">
         <br>
         <div class="panel panel-success">
             <div class="panel-heading">
