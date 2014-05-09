@@ -6,14 +6,20 @@
 
     <title>ParseAngular Blogger</title>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
+<div class="wrap">
 <div class="jumbotron text-center">
-    <a href="https://github.com/vishwajeetv/parseangular-blogger"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <a href="https://github.com/vishwajeetv/parseangular-blogger">
+        <img style="position: absolute; top: 0; left: 0; border: 0;"
+             src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67"
+             alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
+    </a>
     <h1>ParseAngular Blogger</h1>
     <p>A simple blogging platform built with AngularJS and Parse.com</p>
+
 </div>
 <div class="row">
     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -23,27 +29,38 @@
         <div ng-view="">
 
         </div>
+
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 
         </div>
     </div>
 
 </div>
-<footer>
-    <nav class="navbar navbar-default" role="navigation">
-<div class="container">
 
-
-        <p class="navbar-text navbar-right">Developed by
-            <a href="http://www.vishwajeetv.com" class="navbar-link">Vishwajeet Vatharkar
-            </a></p>
 </div>
-    </nav>
+<footer class="footer">
+    <div class="container">
+
+        <div class="pull-right">
+            Developed by
+            <a  class="" href="http://www.vishwajeetv.com" target="_blank">Vishwajeet Vatharkar</a>&nbsp;&nbsp;
+            <a  class="text-info" href="http://www.github.com/vishwajeetv" target="_blank"><i class="fa fa-github fa-2x"></i></a>&nbsp;&nbsp;
+
+            <a  class="text-primary" href="http://www.facebook.com/vishwajeetvatharkar" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>&nbsp;&nbsp;
+
+            <a class="text-danger" href="https://plus.google.com/u/0/+VishwajeetVatharkar"><i class="fa fa-google-plus fa-2x"></i></a>&nbsp;&nbsp;
+            <a class="text-info" href="http://www.linkedin.com/pub/vishwajeet-vatharkar/14/602/62a" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>&nbsp;&nbsp;
+            <a class="text-primary" href="https://twitter.com/vishwajeetv" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+        </div>
+    </div>
 </footer>
+
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/parse-1.2.18.min.js"></script>
 
 <script type="text/javascript" src="js/angular.js"></script>
+<script src='js/firebase.js'></script>
+<script src="js/angularfire.min.js"></script>
 <script type="text/javascript" src="js/angular-route.js"></script>
 <script type="text/javascript" src="js/angular-resource.js"></script>
 <script type="text/javascript" src="parseConfig.js"></script>
@@ -53,7 +70,7 @@
 <script type="text/javascript" src="services/authenticationService.js"></script>
 <script type="text/javascript" src="controllers/blogController.js"></script>
 <script type="text/javascript" src="services/blogService.js"></script>
-
+<script type="text/javascript" src="controllers/chatController.js"></script>
 <script src="js/ui-bootstrap.js"></script>
 <script src="js/bootstrap.js"></script>
 
