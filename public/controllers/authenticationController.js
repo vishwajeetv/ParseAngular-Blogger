@@ -1,17 +1,12 @@
-blogApp.controller('authenticationController', ['$scope', '$routeParams', '$location', 'authenticationService',
-    function ($scope, $routeParams, $location, authenticationService) {
+blogApp.controller('authenticationController', ['$scope', '$timeout', '$routeParams',  '$location', 'authenticationService',
+    function ($scope, $timeout, $routeParams, $location, authenticationService) {
         $scope.newUser = {};
         $scope.checkUser = {};
-
-
 
             $scope.alerts = [
 
             ];
-
-
-
-        $scope.closeAlert = function(index) {
+ $scope.closeAlert = function(index) {
             $scope.alerts.splice(index, 1);
         };
 
@@ -21,8 +16,8 @@ blogApp.controller('authenticationController', ['$scope', '$routeParams', '$loca
 
         $scope.currentUser = authenticationService.getCurrentUser();
 
-        $scope.closeAlert = function(index) {
-            $scope.alerts.splice(index, 1);
+        $scope.closeAlert = function() {
+            $scope.alerts.splice(0, 1);
         };
 
         checkAuth();
@@ -39,9 +34,11 @@ blogApp.controller('authenticationController', ['$scope', '$routeParams', '$loca
             $scope.alerts.splice(0, 1);
             authenticationService.registerUser($scope.newUser).then(function (user) {
                 $scope.currentUser = user;
-
+                checkAuth();
             },function(error) {
                 $scope.alerts.push({type: 'danger' ,msg: error.message});
+                $timeout(function(){$scope.alerts.splice(0, 1)}, 3000);
+
             })
         };
 
@@ -56,6 +53,8 @@ blogApp.controller('authenticationController', ['$scope', '$routeParams', '$loca
 
             },function(error) {
                 $scope.alerts.push({type: 'danger' ,msg: 'Invalid Username or Password'});
+                $timeout(function(){$scope.alerts.splice(0, 1)}, 3000);
+
             });
         };
 

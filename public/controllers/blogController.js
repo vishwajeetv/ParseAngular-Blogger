@@ -1,6 +1,6 @@
 
-blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'authenticationService',
-    function ($scope, $location, blogService, authenticationService) {
+blogApp.controller('blogController', ['$scope','$timeout', '$location', 'blogService', 'authenticationService',
+    function ($scope, $timeout, $location, blogService, authenticationService) {
 
         $scope.isCollapsed = true;
 
@@ -14,7 +14,6 @@ blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'aut
                 $scope.totalItems = $scope.blogs.length;
                 $scope.totalItemsToDisplay = $scope.totalItems;
             });
-
 
         $scope.currentPage = 1;
         $scope.maxSize = 5;
@@ -41,7 +40,6 @@ blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'aut
 
     var blogToPost ={};
 
-
     $scope.addBlog = function () {
         blogToPost.title = $scope.newBlog.title;
         blogToPost.post = $scope.newBlog.post;
@@ -55,7 +53,7 @@ blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'aut
                     $scope.blogs = blogsData;
                     $scope.isCollapsed = true;
                     $scope.alerts.push({type: 'success' ,msg: "Successfully Posted! Cheers!"});
-                    $timeout($scope.alerts.splice(0, 1), 2000);
+                    $timeout(function(){$scope.alerts.splice(0, 1)}, 3000);
                 });
         });
     };
@@ -65,7 +63,5 @@ blogApp.controller('blogController', ['$scope', '$location', 'blogService', 'aut
             $location.path("/");
 
     };
-
-
 }]);
 
