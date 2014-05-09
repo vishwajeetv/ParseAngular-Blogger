@@ -1,5 +1,5 @@
 
-var blogApp = angular.module('blogApp' , ['ngResource','ngRoute','ui.bootstrap']);
+var blogApp = angular.module('blogApp' , ['firebase','ngResource','ngRoute','ui.bootstrap']);
 
 blogApp.config(blogRouter);
 
@@ -13,6 +13,10 @@ function blogRouter ($routeProvider)
         when('/blog', {
             controller: 'blogController',
             templateUrl: 'views/blogView.html'
+        }).
+        when('/chat', {
+            controller: 'chatController',
+            templateUrl: 'views/chatView.html'
         }).
         otherwise({
             redirectTo: '/'

@@ -1,0 +1,36 @@
+<div class="col-md-1 col-lg-1">
+
+</div>
+<div class="col-lg-10 col-md-10">
+
+    <h2 class="text-danger">Open Chat <small>Built with Firebase and AngularJS</small><a href="#/blog" class="btn btn-success btn-lg pull-right">Check Blogs</a></h2>
+
+<hr>
+
+<div ng-repeat="msg in messages">
+
+    <div class="well">
+        <span class="glyphicon glyphicon-user"></span>
+        <span class="text-danger">{{msg.from}}</span>:
+
+    <span class="text-primary">
+         {{msg.body}}
+    </span>
+</div>
+    </div>
+
+<div class="col-lg-8 col-md-8">
+
+<div class="input-group-lg">
+    <span class="label label-primary">Message</span>
+
+    <textarea type="text" class="form-control" ng-model="msg" ng-keydown="addMessage($event)" placeholder="Message..."></textarea>
+    <div class="pull-right">Hit Enter to Send Message</div>
+</div>
+</div>
+    <hr>
+    <button class="btn btn-danger pull-right" ng-click="logOut()">Log out</button>
+    </div>
+<div class="col-md-1 col-lg-1">
+
+</div>

@@ -6,6 +6,12 @@ blogApp.controller('blogController', ['$scope','$timeout', '$location', 'blogSer
 
         $scope.newBlog = {};
     $scope.currentUser = authenticationService.getCurrentUser();
+
+        if($scope.currentUser == null)
+        {
+            $location.path('/');
+        }
+
         $scope.totalItems;
 
         $scope.blogs =
