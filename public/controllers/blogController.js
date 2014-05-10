@@ -66,6 +66,12 @@ blogApp.controller('blogController', ['$scope','$timeout', '$location', 'blogSer
                     $scope.isCollapsed = true;
 
                 });
+            $scope.myBlogs =
+                blogService.getMyBlogs($scope.currentUser).then(function (blogsData) {
+                    $scope.myBlogs = blogsData;
+                    $scope.myTotalItems = $scope.blogs.length
+
+                });
         });
     };
 
