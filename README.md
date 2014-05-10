@@ -1,9 +1,6 @@
 ParseAngular Blogger
 ==============
 
-ParseAngular Blogger
-==============
-
 Simple blogging and chatting platform built with AngularJS and Parse.com
 Great for kickstarting AngularJS application development.
 
