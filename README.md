@@ -8,9 +8,10 @@ Live demo is deployed at https://vishwajeetv.parseapp.com
 
 Features
 ========
-1. Blogging Platform
+1. Scalable Blogging Platform
 2. Open real time chatting platform.
 3. Robust user authentication.
+4. Built with best practices used in AngularJS development.
 
 Dependencies
 ============
@@ -19,4 +20,4 @@ Dependencies
 3. Integrated with Firebase and AngularFire (Chatting Module)
 4. Built with Twitter Bootstrap 3
 5. Uses AngularUI-Bootstrap.
-
+6. Uses TypeAhead
