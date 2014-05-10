@@ -7,14 +7,14 @@ Great for kickstarting AngularJS application development.
 Live demo is deployed at https://vishwajeetv.parseapp.com
 
 Features
-========
+--------
 1. Scalable Blogging Platform
 2. Open real time chatting platform.
 3. Robust user authentication.
 4. Built with best practices used in AngularJS development.
 
 Dependencies
-============
+------------
 1. Built with AngularJS 1.3.0
 2. Integrated with Parse.com JavaScript SDK
 3. Integrated with Firebase and AngularFire (Chatting Module)
