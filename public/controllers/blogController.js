@@ -4,6 +4,10 @@ blogApp.controller('blogController', ['$scope','$timeout', '$location', 'blogSer
 
         $scope.isCollapsed = true;
 
+        $scope.navbarURL = 'views/navbar.html';
+        $scope.blogActive="active";
+        $scope.chatActive="";
+
         $scope.newBlog = {};
     $scope.currentUser = authenticationService.getCurrentUser();
 
@@ -54,12 +58,13 @@ blogApp.controller('blogController', ['$scope','$timeout', '$location', 'blogSer
         blogService.addBlog(blogToPost).then(function () {
             $scope.newBlog.title = "";
             $scope.newBlog.post = "";
+            $scope.alerts.push({type: 'success' ,msg: "Successfully Posted! Cheers!"});
+            $timeout(function(){$scope.alerts.splice(0, 1)}, 2000);
             $scope.blogs =
                 blogService.getBlogs().then(function (blogsData) {
                     $scope.blogs = blogsData;
                     $scope.isCollapsed = true;
-                    $scope.alerts.push({type: 'success' ,msg: "Successfully Posted! Cheers!"});
-                    $timeout(function(){$scope.alerts.splice(0, 1)}, 3000);
+
                 });
         });
     };

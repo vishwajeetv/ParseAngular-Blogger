@@ -1,6 +1,10 @@
 blogApp.controller('chatController', ['$scope', '$location','$firebase','authenticationService',
     function ($scope, $location, $firebase, authenticationService)
     {
+        $scope.navbarURL = 'views/navbar.html';
+        $scope.blogActive="";
+        $scope.chatActive="active";
+
         $scope.currentUser = authenticationService.getCurrentUser();
 
         if($scope.currentUser == null)

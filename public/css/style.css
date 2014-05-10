@@ -1,7 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
-body{
-    font-family: 'Open Sans', sans-serif;
-}
+
+
 .auth-toggle.btn.active{
 
     background: purple;
@@ -12,12 +10,10 @@ body{
 
 }
 
+
 footer{
 bottom: 0;
     padding:10;
 
-}
-.navbar-fixed-bottom{
-    margin-left: 30px;
 
 }

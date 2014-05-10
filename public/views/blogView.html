@@ -1,13 +1,18 @@
+<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
+</div>
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 <div class="row">
+
 <div class="col-md-1 col-lg-1">
 
 </div>
     <div class="col-lg-10 col-md-10">
-
-<h3>Welcome {{currentUser.get('username')}} <a href="#/chat" class="btn btn-success btn-lg pull-right">Chat with other Users</a> </h3>
+        <div ng-include src="navbarURL"></div>
+<h3>Welcome {{currentUser.get('username')}}</h3>
 
         <hr>
-        <button class="btn btn-primary btn-lg pull-right" ng-click="isCollapsed = !isCollapsed">New Post</button>
+        <button class="btn btn-primary pull-right" ng-click="isCollapsed = !isCollapsed">New Post</button>
 
         <div collapse="isCollapsed">
 <hr>
@@ -32,7 +37,7 @@
 
         <div class="input-group input-group-lg col-md-6 col-lg-6">
     <span class="input-group-addon glyphicon glyphicon-search"></span>
-    <input type="text" class="form-control" ng-model="filter.title" placeholder="Search by Title"/>
+    <input type="text" class="form-control" ng-model="filter.title" typeahead="blog.get('title') for blog in blogs" typeahead-loading="LoadingTitles" placeholder="Search by Title"/>
 </div>
 
 <hr>
@@ -77,10 +82,14 @@
                     ng-click="setPage()" class="pagination-sm"
                     previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
         <hr>
-        <button class="btn btn-danger pull-right" ng-click="logOut()">Log out</button>
-
-</div>
 
 
 </div>
 
+
+</div>
+
+<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
+</div>
+    </div>
