@@ -4,7 +4,7 @@ ParseAngular Blogger
 Simple blogging and chatting platform built with AngularJS and Parse.com
 Great for kick starting AngularJS application development.
 
-Live demo is deployed at HTTP://vishwajeetv.parse.com
+Live demo is deployed at http://vishwajeetv.parse.com
 
 Features
 --------
